@@ -3,6 +3,7 @@ package mx.edu.itson.practica6
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -88,12 +89,14 @@ class PeliculaAdapter:BaseAdapter {
         title.setText(pelicula.titulo)
 
         image.setOnClickListener() {
+            var seatsAvailable = 20 - pelicula.seats.size
+            Log.d("SEATS", "$seatsAvailable")
             val intento = Intent(context, detalle_pelicula::class.java)
             intento.putExtra("titulo", pelicula.titulo)
             intento.putExtra("image", pelicula.image)
             intento.putExtra("header", pelicula.header)
             intento.putExtra("sinopsis", pelicula.sinopsis)
-            intento.putExtra("numberSeats", (20-pelicula.seats.size))
+            intento.putExtra("numberSeats", seatsAvailable)
             context!!.startActivity(intento)
         }
         return vista
