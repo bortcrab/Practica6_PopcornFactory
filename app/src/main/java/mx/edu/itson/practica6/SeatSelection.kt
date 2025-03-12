@@ -38,30 +38,8 @@ class SeatSelection : AppCompatActivity() {
         val confirm: Button = findViewById(R.id.btnConfirm)
         confirm.setOnClickListener {
             Toast.makeText(this, "Enjoy the movie! :D", Toast.LENGTH_LONG).show()
-            val fila1 = row1.checkedRadioButtonId
-            val fila2 = row2.checkedRadioButtonId
-            val fila3 = row3.checkedRadioButtonId
-            val fila4 = row4.checkedRadioButtonId
-
-            var asientoSeleccionado = -1
-            if (fila1 > -1) {
-                asientoSeleccionado = fila1
-            } else if (fila2 > -1) {
-                asientoSeleccionado = fila2
-            } else if (fila3 > -1) {
-                asientoSeleccionado = fila3
-            } else if (fila4 > -1) {
-                asientoSeleccionado = fila4
-            }
-
-            if (asientoSeleccionado != -1) {
-                val intento = Intent()
-                intento.putExtra("seat", asientoSeleccionado)
-                intento.putExtra("seats", (seats-1))
-                intento.putExtra("id", posMovie)
-                intento.putExtra("tipo", tipo)
-                setResult(Activity.RESULT_OK, intento)
-            }
+            var intent: Intent = Intent(this, Catalogo::class.java)
+            startActivity(intent)
         }
 
 
